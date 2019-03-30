@@ -1,6 +1,6 @@
 {
   "name": "d3fc-candle",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Interface for d3fc candle data",
   "main": "dist/d3fc-candle.js",
   "types": "dist/d3fc-candle.d.ts",
