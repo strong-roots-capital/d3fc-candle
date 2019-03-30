@@ -5,7 +5,9 @@
   "main": "dist/d3fc-candle.js",
   "types": "dist/d3fc-candle.d.ts",
   "scripts": {
-    "install": "tsc",
+    "prepublishOnly": "npm run compile",
+    "compile": "npm run clean && tsc",
+    "clean": "rm -rf  dist",
     "ava": "ava",
     "test": "nyc ava --tap | tap-nyc",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
@@ -15,6 +17,9 @@
     "push-with-tags": "git push origin master && git push origin --tags",
     "push-and-publish": "npm run push-with-tags && npm publish"
   },
+  "files": [
+    "dist/"
+  ],
   "husky": {
     "hooks": {
       "pre-push": "npm run typedoc && git add doc && (git commit -m 'Update documentation' || true)"
@@ -35,11 +40,8 @@
     "url": "https://github.com/strong-roots-capital/d3fc-candle/issues"
   },
   "homepage": "https://github.com/strong-roots-capital/d3fc-candle",
-  "dependencies": {
-    "@types/node": "^10.12.18",
-    "typescript": "^3.2.2"
-  },
   "devDependencies": {
+    "@types/node": "^10.12.18",
     "ava": "^1.0.0",
     "codecov": "^3.1.0",
     "concurrently": "^4.1.0",
@@ -48,7 +50,8 @@
     "tap-nyc": "^1.0.3",
     "ts-node": "^7.0.1",
     "typedoc": "^0.13.0",
-    "typedoc-plugin-markdown": "^1.1.20"
+    "typedoc-plugin-markdown": "^1.1.20",
+    "typescript": "^3.2.2"
   },
   "ava": {
     "compileEnhancements": false,
